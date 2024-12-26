@@ -21,7 +21,7 @@ const Header=()=>{
         }
         else{
             dispatch(removeUser());
-            //navigate("/");
+            navigate("/");
         }
     });
     //unsubscribe when component unmount
@@ -44,9 +44,7 @@ signOut(auth).then(() => {
             <h1 className="text-white m-2 text-xl font-bold">News Recommendation</h1>
             <div className="flex text-white justify-between">
             <h1 className="m-2" ><Link to="/browse">Home</Link></h1>
-                <h1 className="m-2" ><Link to="/about">about us</Link></h1>
                 <h1 className="m-2"><Link to="/sports">Sports</Link></h1>
-                <h1 className="m-2">health</h1>
                 <h1 className="m-2"><Link to="/politics">Politics</Link></h1>
                 <img
                 alt="userProfile" 

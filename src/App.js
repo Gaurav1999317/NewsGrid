@@ -5,9 +5,9 @@ import appStore from './utils/appStore';
 import Header from './components/Header';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Browse from './components/Browse';
-import AboutUs from './components/AboutUs';
 import Sports from './components/Sports';
 import Politics from './components/Politics';
+import Footer from './components/Footer';
 
 const AppLayout=()=>{
   const user=useSelector(store=>store.user)
@@ -15,6 +15,7 @@ const AppLayout=()=>{
   return <div className="app">
   { user&& <Header />}
   <Outlet />
+  {user&&<Footer/>}
 </div>
 }
 const appRouter=createBrowserRouter([
@@ -30,10 +31,7 @@ const appRouter=createBrowserRouter([
           path:"/browse",
           element:<Browse/>,    
       },
-      {
-          path:"about",
-          element:<AboutUs/>
-      },
+      
       {
           path:"sports",
           element:<Sports/>
