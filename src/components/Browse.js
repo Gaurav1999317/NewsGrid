@@ -14,7 +14,7 @@ const Browse=()=>{
    useFetchNews();
     return(
         <div className="" >
-            {<Header/>}
+            
             <MainContainer/>
             
         </div>

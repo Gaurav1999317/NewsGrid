@@ -6,8 +6,10 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login=()=>{
+    const navigate=useNavigate();
     const user=useSelector(store=>store.user)
     const dispatch= useDispatch();
     const [isSignUpForm,setIsSignUpForm]=useState(false);
@@ -36,6 +38,7 @@ const Login=()=>{
             displayName:displayName,
             photoURL:photoURL
              }))
+             navigate("/browse")
   
             })
             .catch((error) => {
@@ -56,6 +59,7 @@ const Login=()=>{
                 email:email,
                 uid:uid,
                  }))
+                 navigate("/browse")
             // ...
             })
             .catch((error) => {
@@ -68,11 +72,11 @@ const Login=()=>{
     }
         
     }
-    
+    console.log("Login componenet rendered")
     
     return(
 <div className=" h-screen w-screen  bg-gray-900">
-    {user&&<Header/>}
+    
     <div className= "absolute  mx-96  ">
     <form className="bg-gray-800 p-12 w-10/12 mt-32 border  rounded-md
      " onSubmit={(e)=>e.preventDefault()}>

@@ -1,7 +1,7 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect } from "react";
 import { auth } from "../utils/firebase";
-import {   useNavigate } from "react-router-dom";
+import {   Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser,removeUser } from "../utils/userSlice";
 
@@ -17,22 +17,19 @@ const Header=()=>{
                 email:email,
                 uid:uid,
             }));
-            navigate("/browse")
+            
         }
         else{
             dispatch(removeUser());
-            navigate("/");
+            //navigate("/");
         }
     });
     //unsubscribe when component unmount
     return ()=>unsubscribe();
     },[])
-    const handleAboutUs=()=>{
-        navigate("/about")
-    }
-    const handleHome=()=>{
-        navigate("/browse")
-    }
+    
+    
+    
     const handleSignOut=()=>{
         
 signOut(auth).then(() => {
@@ -46,11 +43,11 @@ signOut(auth).then(() => {
         <div className="shadow-xl bg-gray-800 flex justify-between">
             <h1 className="text-white m-2 text-xl font-bold">News Recommendation</h1>
             <div className="flex text-white justify-between">
-            <h1 className="m-2" onClick={handleHome} >Home</h1>
-                <h1 className="m-2" onClick={handleAboutUs} >about us</h1>
-                <h1 className="m-2">Sports</h1>
+            <h1 className="m-2" ><Link to="/browse">Home</Link></h1>
+                <h1 className="m-2" ><Link to="/about">about us</Link></h1>
+                <h1 className="m-2"><Link to="/sports">Sports</Link></h1>
                 <h1 className="m-2">health</h1>
-                <h1 className="m-2">Politics</h1>
+                <h1 className="m-2"><Link to="/politics">Politics</Link></h1>
                 <img
                 alt="userProfile" 
                 src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" 

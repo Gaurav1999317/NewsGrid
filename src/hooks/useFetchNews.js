@@ -8,11 +8,8 @@ export const useFetchNews=()=>{
 
     const dispatch=useDispatch();
     const fetchNews=async()=>{
-     const data= await fetch("https://newsapi.org/v2/top-headlines?category=sports&apiKey="+API_KEY);
-     const json=await data.json();
-     
-     
-     
+     const data= await fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey="+API_KEY);
+     const json=await data.json(); 
      dispatch(addNews(json.articles))     
     }
     useEffect(()=>{
